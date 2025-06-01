@@ -1,1 +1,1 @@
-Shell basics project for ALU
+# ALU Shell Project
