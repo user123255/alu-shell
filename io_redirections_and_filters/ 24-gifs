@@ -1,0 +1,4 @@
+#!/bin/bash
+find currentdir type f name gifformat  cut space d space g i f 
+ sort ignore
+
