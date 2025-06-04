@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lt --time-style=long-iso | grep '^-' | head -n 10 | awk '{print $NF}'
+find . -maxdepth 1 -type f -printf "%T@ %f\n" | sort -nr | head -n 10 | cut -d' ' -f2-
