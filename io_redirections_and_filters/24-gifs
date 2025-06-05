@@ -1,2 +1,2 @@
 #!/bin/bash
-for f in $(find . -type f -name "*.gif") do name=${f##*/} echo ${name%.gif} done > names.txt sort -f names.txt
+for f in $(find . \( -name "*.gif" -o -name ".*.gif" -o -name "*.png" -o -name ".*.png" -o -name "*.jpg" -o -name ".*.jpg" \) -type f) do name=${f##*/} name=${name%.*} echo "$name" done  sort -f > list
