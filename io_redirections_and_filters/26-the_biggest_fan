@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
+#!/bin/env bash
 python3 -c "import sys, collections; print('\n'.join(x[0] for x in collections.Counter(l.strip().split('\t')[0] for l in open(sys.argv[1]).readlines()[1:]).most_common(11)))" "$1"
