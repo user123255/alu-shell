@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
-python3 -c "import sys,collections;lines=open(sys.argv[1]).readlines()[1:];hosts=[l.strip().split('\t')[0] for l in lines];c=collections.Counter(hosts);[print(h) for h,_ in c.most_common(11)]" "$1"
+#!/bin/bash
+python3 -c "import sys,collections,os;f=sys.argv[1] if len(sys.argv)>1 and os.path.isfile(sys.argv[1]) else exit(1);lines=open(f).read().split('\n')[1:];hosts=[l.split('\t')[0] for l in lines if l];c=collections.Counter(hosts);[print(h) for h,_ in c.most_common(11)]" "$1"
