@@ -1,2 +1,2 @@
-#!/bin/bash
-python3 -c "import sys, collections; print(...)"
+#!/usr/bin/env bash
+python3 -c "import sys,collections;lines=open(sys.argv[1]).readlines()[1:];hosts=[l.strip().split('\t')[0] for l in lines];c=collections.Counter(hosts);[print(h) for h,_ in c.most_common(11)]" "$1"
