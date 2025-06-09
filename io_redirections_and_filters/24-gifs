@@ -1,2 +1,0 @@
-#!/bin/bash
-find . -type f -iname "*.gif" -exec bash -c 'for f do echo "${f##*/%.gif}" done' _ {} + | sort -fu
