@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Tell the story of passwd
 while IFS=: read -r username password userid groupid userid_info home command; do
-  echo "The user $username is part of the $groupid gang, lives in $home and rides $command. USER ID's place is protected by the passcode $password, more info about the user here: $userid_info"
+  echo "The user $username is part of the $groupid gang, lives in $home and rides $command. USER ID's place is protected by the passcode $password, more info about the user here: $userid_info"
