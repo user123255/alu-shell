@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script manages the 'manage_my_process' daemon (start, stop, restart)
+# This script manages the 'manage_my_process' background task
 
 PID_FILE="/var/run/my_process.pid"
 PROCESS_SCRIPT="./manage_my_process"
@@ -7,21 +7,22 @@ PROCESS_SCRIPT="./manage_my_process"
 start() {
     nohup "$PROCESS_SCRIPT" > /dev/null 2>&1 &
     echo $! > "$PID_FILE"
-    echo "manage_my_process started"
+    [ "$suppress_output" != true ] && echo "manage_my_process started"
 }
 
 stop() {
     if [ -f "$PID_FILE" ]; then
         kill "$(cat "$PID_FILE")" 2>/dev/null
         rm -f "$PID_FILE"
-        echo "manage_my_process stopped"
+        [ "$suppress_output" != true ] && echo "manage_my_process stopped"
     fi
 }
 
 restart() {
+    suppress_output=true
     stop
-    sleep 1
     start
+    suppress_output=false
     echo "manage_my_process restarted"
 }
 

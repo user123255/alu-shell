@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script writes "I am alive!" every 2 seconds to /tmp/my_process
+# This script runs in the background and prints "I am alive!" every 2 seconds
 
 while true; do
   echo "I am alive!" >> /tmp/my_process
