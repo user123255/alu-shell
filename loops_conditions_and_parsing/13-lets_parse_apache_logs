@@ -1,5 +1,3 @@
-#!/bin/bash
-# This script extracts and displays the IP address and HTTP status code 
-# from each line in the Apache access log (apache-access.log) using awk.
-# $1 refers to the IP address (1st field), $9 refers to the HTTP status code (9th field).
+#!/usr/bin/env bash
+#Let's parse Apache logs
 awk '{print $1, $9}' apache-access.log
