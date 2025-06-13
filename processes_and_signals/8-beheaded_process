@@ -1,16 +1,9 @@
 #!/usr/bin/env bash
-# Kill the 7-highlander process and confirm
+# This script kills the 7-highlander process and confirms termination
 
 pkill -f '7-highlander' >/dev/null 2>&1
-
-# Wait briefly to let the process exit
 sleep 1
 
-# Check if process still exists
-if pgrep -f '7-highlander' >/dev/null; then
-    # Process still running - do nothing or exit with error
-    exit 1
-else
-    # Process is gone - print OK
+if ! pgrep -f '7-highlander' >/dev/null; then
     echo "OK"
 fi
