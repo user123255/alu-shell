@@ -1,16 +1,5 @@
 #!/usr/bin/env bash
+# Script: 8-beheaded_process
+# Purpose: Kill the process named 7-highlander silently
 
-# Kill the process named 7-highlander silently
-pkill -f 7-highlander >/dev/null 2>&1
-
-# Wait a bit to let it terminate
-sleep 1
-
-# Check if the process is still running
-if pgrep -f 7-highlander >/dev/null; then
-    # Still running, so do nothing or print something else
-    exit 1
-else
-    # Process not found, print OK
-    echo "OK"
-fi
+pkill -f '7-highlander' >/dev/null 2>&1
