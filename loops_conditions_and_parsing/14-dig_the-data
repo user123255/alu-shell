@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 #!/bin/bash
 
 awk '{print $1, $9}' access.log | sort | uniq -c | sort -rn
+=======
+#!/usr/bin/env bash
+# This script groups visitors by IP and HTTP status code, and displays,
+awk '{print $1,$9}' apache-access.log | sort -V | uniq -c | sort -n | perl -e 'print reverse <STDIN>'
+>>>>>>> origin/main

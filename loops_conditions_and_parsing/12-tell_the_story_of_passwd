@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/bin/bash
+=======
+#!/usr/bin/env bash
+>>>>>>> origin/main
 #Tell the story of passwd
 # Read each line of /etc/passwd using while loop
 while IFS=":" read -r username password uid gid info home shell; do
