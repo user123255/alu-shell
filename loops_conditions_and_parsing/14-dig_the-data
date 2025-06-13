@@ -1,31 +1,3 @@
 #!/usr/bin/env bash
-
-# Check if the log file is provided
-if [[ $# -ne 1 ]]; then
-    echo "Usage: $0 path/to/apache-access.log"
-    exit 1
-fi
-
-log_file="$1"
-
-# Check if the file exists
-if [[ ! -f "$log_file" ]]; then
-    echo "File not found: $log_file"
-    exit 1
-fi
-
-# Use awk to parse and process the log file
-awk '
-{
-    # Count occurrences of each IP and HTTP code
-    key = $1 " " $9
-    count[key]++
-}
-END {
-    # Print the results in the required format
-    for (entry in count) {
-        split(entry, parts, " ")
-        print count[entry], parts[1], parts[2]
-    }
-}
-' "$log_file" | sort -nr | head -n 10
+# This script groups visitors by IP and HTTP status code, and displays,
+awk '{print $1,$9}' apache-access.log | sort -V | uniq -c | sort -n | perl -e 'print reverse <>'
