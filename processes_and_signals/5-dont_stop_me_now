@@ -6,8 +6,7 @@ pid=$(pgrep -f 4-to_infinity_and_beyond)
 
 # Check if the process exists and kill it
 if [[ -n $pid ]]; then
-    kill "$pid"
-    echo "Terminated"
+    kill "$pid" 2>/dev/null
 else
-    echo "No process found"
+    exit 0  # Exit without any output if no process is found
 fi
