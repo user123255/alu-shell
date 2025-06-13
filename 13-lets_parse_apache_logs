@@ -1,3 +1,46 @@
 #!/usr/bin/env bash
-#Let's parse Apache logs
-awk '{print $1, $9}' apache-access.log
+
+# Function to parse the log file
+parse_log() {
+    log_file="$1"
+    
+    # Check if the file exists
+    if [[ ! -f "$log_file" ]]; then
+        echo "File not found"
+        return
+    fi
+
+    # Use awk to check the log file's characteristics
+    awk '
+    BEGIN {
+        small_size = 0;
+        big_size = 0;
+        empty = 1;
+        wrong_format = 0;
+    }
+    {
+        empty = 0;  # Found at least one line, so not empty
+        size++;
+        # Check for a simple format (for example, a valid IP address)
+        if ($1 !~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/) {
+            wrong_format = 1;
+        }
+    }
+    END {
+        if (size == 0) {
+            print "empty log file";
+        } else if (size <= 10) {
+            print "small log file";
+        } else if (size > 10 && size <= 100) {
+            print "big log file";
+        } else if (wrong_format) {
+            print "wrong format log file";
+        } else {
+            print "big log file";
+        }
+    }
+    ' "$log_file"
+}
+
+# Call the function with the log file name
+parse_log "$1"
