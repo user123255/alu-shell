@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Function to parse the log file
 parse_log() {
     log_file="$1"
