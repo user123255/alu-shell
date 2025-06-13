@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
-# This script kills the process named 7-highlander silently
+# This script kills the process named 7-highlander silently and outputs OK if successful
 
 pkill -f '7-highlander' >/dev/null 2>&1
+
+# Wait a moment to let the process terminate
+sleep 1
+
+if pgrep -f '7-highlander' >/dev/null; then
+    # Process still running - do nothing (or you can print error)
+    exit 1
+else
+    # Process killed successfully
+    echo "OK"
+fi
