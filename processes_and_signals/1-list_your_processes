@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
+# This script displays all currently running processes for all users
+# in a user-oriented format and shows process hierarchy
 
-# This script displays a list of currently running processes for all users,
-# including those without a TTY, in a user-oriented format, showing process hierarchy.
-
-ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --sort=user | awk 'BEGIN {print "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"} {if (NR > 1) print ($0 ~ /^[^ ]/) ? "  \\_ " $0 : $0}'
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd --forest
