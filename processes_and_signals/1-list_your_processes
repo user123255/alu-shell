@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# This script displays all running processes for all users in a user-oriented format with process hierarchy
+# This script displays all running processes for all users, showing only the user column
 
-ps -eo user,cmd --forest | awk 'NR==1 {print "USER\tCMD"} NR>1 {print $1, $2}'
+ps -eo user | awk 'NR==1 {print "USER"} NR>1 {print $1}'
