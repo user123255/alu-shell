@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script displays all currently running processes for all users
-# with user-friendly headers and full start time including seconds
+# This script displays all running processes for all users
+# in a user-oriented format with a hierarchical (tree-like) view.
 
-ps -eo user,lstart,cmd --forest | awk 'NR==1 {print "USER STARTED CMD"; next} {printf "%-8s %-20s %s\n", $1, $2" "$3" "$4" "$5" "$6, substr($0, index($0,$7))}'
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd --forest
