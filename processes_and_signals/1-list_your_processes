@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# This script displays all running processes for all users in a user-oriented format, showing the process hierarchy
+# This script displays all running processes for all users with USER, STARTED and CMD columns
 
-ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd --forest
+ps -eo user,lstart,cmd --no-headers | awk 'BEGIN { printf "%-8s %-10s %s\n", "USER", "STARTED", "CMD" } { printf "%-8s %-10s %s\n", $1, $4":"$5":"$6, $7 }'
