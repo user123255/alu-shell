@@ -2,4 +2,3 @@
 # This script displays only the user column for all running processes
 
 ps -eo user
-
