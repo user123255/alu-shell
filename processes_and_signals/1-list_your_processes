@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # This script displays all running processes for all users, showing only the user column
 
-ps -eo user | awk 'NR==1 {print "USER"} NR>1 {print $1}'
+ps -eo user
